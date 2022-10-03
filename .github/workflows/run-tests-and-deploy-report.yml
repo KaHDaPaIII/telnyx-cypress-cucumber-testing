@@ -1,18 +1,21 @@
-name: CI notify
-
-on:
-  workflow_run:
-    workflows: ["Cypress run tests"]
-    types:
-      - completed
-
+name: Cypress run tests and deploy allure report
+on: [push]
 jobs:
-  allure:
-    timeout-minutes: 60
+  cypress:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - name: Checkout
+        uses: actions/checkout@v2.4.2
 
+      - name: Cypress run
+        uses: cypress-io/github-action@v4.2.0
+        with: 
+          config: video=false
+          command: npm run cypress:run:allure
+        env:
+          CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      
       - name: Get Allure history
         uses: actions/checkout@v2
         if: always()
