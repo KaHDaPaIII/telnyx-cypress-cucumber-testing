@@ -7,13 +7,13 @@
     "cypress:open": "cross-env TZ=UTC npx cypress open",
     "cypress:run": "cross-env TZ=UTC npx cypress run",
     "cypress:run:allure": "cross-env TZ=UTC npx cypress run --env allure=true",
-    "cypress:run:record": "cross-env TZ=UTC npx cypress run --record",
     "cypress:run:headed": "cross-env TZ=UTC npx cypress run --headed",
     "cypress:run:homepage": "cross-env TZ=UTC npx cypress run --spec 'cypress/e2e/homepage.feature'",
     "cypress:run:login": "cross-env TZ=UTC npx cypress run --spec 'cypress/e2e/login.feature'",
     "cypress:run:registration": "cross-env TZ=UTC npx cypress run --spec 'cypress/e2e/registration.feature'",
     "cypress:run:contact-us": "cross-env TZ=UTC npx cypress run --spec 'cypress/e2e/contact-us.feature'",
     "cypress:run:chrome": "cross-env TZ=UTC npx cypress run --browser chrome",
+    "cypress:run:disable-compression": "cross-env TZ=UTC npx cypress run --config-file=disable-compression.config.js",
     "allure:serve": "npx allure serve allure-results",
     "allure:generate": "npx allure generate allure-results --clean && allure open"
   },
@@ -22,6 +22,7 @@
   "devDependencies": {
     "@cypress/browserify-preprocessor": "^3.0.2",
     "@shelex/cypress-allure-plugin": "^2.32.1",
+    "allure-commandline": "^2.18.1",
     "cross-env": "^7.0.3",
     "cypress": "^10.8.0",
     "cypress-xpath": "^2.0.1"
