@@ -5,7 +5,6 @@ Feature: Testing the registration page
         Then I should see the error below the “Work email” field
         And I should see the error below the “Full name” field
     
-    @focus
     Scenario: Registration with valid random generated inputs
         Given randomly generated user credentials
         When I enter a randomly generated user credentials
